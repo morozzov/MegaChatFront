@@ -1,4 +1,4 @@
-import {Api, authApi} from "./index";
+import {Api} from "./index";
 import jwtDecode from "jwt-decode";
 
 export const registration = async (username, password, name) => {

@@ -1,10 +1,8 @@
 import React, {useState} from 'react'
-import {Layout, Button, Form, Input, Card, Alert, Typography, Modal} from 'antd';
+import {Layout, Button, Form, Input, Card, Alert} from 'antd';
 import {login} from "../http/UserApi";
 import {Link, useNavigate} from 'react-router-dom';
-import { SIGNUP_ROUTE} from '../utils';
-
-const {Paragraph} = Typography;
+import {SIGNUP_ROUTE} from '../utils';
 
 export default function Signin() {
     const {Content} = Layout;
@@ -26,10 +24,6 @@ export default function Signin() {
     }
 
     const onFinish = async (values) => {
-        let credentials = {
-            username: username,
-            password: password
-        }
         await login(username, password).then(
             response => {
                 let token = response.data
