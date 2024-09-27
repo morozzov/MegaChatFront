@@ -1,7 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import React, {useState, useEffect} from 'react'
 import {Layout} from "antd";
-import Header from "../component/headerComponent/header";
 import Signin from "../component/signinComponent";
 import {isTokenValid} from '../utils/authUtils';
 import {HOME_ROUTE} from "../utils";
@@ -9,7 +8,7 @@ import {HOME_ROUTE} from "../utils";
 export default function AuthPage() {
 
     const navigate = useNavigate();
-    let [isAuth, setAuth] = useState(false)
+    let [isAuth, setAuth] = useState(true)
 
     useEffect(() => {
         const token = localStorage.getItem('token');

@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {Layout} from 'antd';
 import {useNavigate} from 'react-router-dom';
-import jwtDecode from "jwt-decode";
 import Home from "../component/homeComponent";
 import Header from "../component/headerComponent/header";
 import {isTokenValid} from "../utils/authUtils";
@@ -18,7 +17,7 @@ export default function HomePage() {
             setAuth(true);
         } else {
             localStorage.removeItem("token");
-             setAuth(false);
+            setAuth(false);
             navigate(SIGNIN_ROUTE)
         }
     }, [navigate]);
@@ -32,6 +31,6 @@ export default function HomePage() {
                 {/*<Footer/>*/}
             </Layout>
             :
-        <p/>
+            <p/>
     );
 };

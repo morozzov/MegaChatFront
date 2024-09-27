@@ -1,25 +1,33 @@
 import React, {useState, useEffect} from 'react'
-// import Footer from '../components/footerComponent/footer'
-// import Home from '../components/homeComponent/homeComponent'
-// import Header from '../components/headerComponent/header'
 import {Layout} from 'antd';
 import {useNavigate} from 'react-router-dom';
-import jwtDecode from "jwt-decode";
+import Signup from "../component/signupComponent";
+import {isTokenValid} from "../utils/authUtils";
+import {HOME_ROUTE} from "../utils";
 
 export default function RegisterPage() {
 
     const navigate = useNavigate();
-    let [isAuth, setAuth] = useState(false)
+    let [isAuth, setAuth] = useState(true)
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token === null || !isTokenValid(token)) {
+            localStorage.removeItem("token");
+            setAuth(false);
+        } else {
+            setAuth(true);
+            navigate(HOME_ROUTE);
+        }
+    }, [navigate]);
 
     return (
-        // isAuth
-        //     ?
-        <Layout>
-            {/*<Header/>*/}
-            {/*<Home/>*/}
-            {/*<Footer/>*/}
-        </Layout>
-        // :
-        // <p/>
+        !isAuth
+            ?
+            <Layout>
+                <Signup/>
+            </Layout>
+            :
+            <p/>
     );
 };
